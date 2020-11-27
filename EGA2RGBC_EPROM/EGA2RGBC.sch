@@ -712,14 +712,9 @@ F 3 "" H 1900 6050 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	2400 5750 2150 5750
-Wire Wire Line
-	2150 5750 2150 5850
-Wire Wire Line
 	2150 6450 2400 6450
 Wire Wire Line
 	2400 5850 2150 5850
-Connection ~ 2150 5850
 Wire Wire Line
 	2150 5850 2150 5950
 Wire Wire Line
@@ -809,4 +804,53 @@ F 3 "~" H 7450 2400 50  0001 C CNN
 	1    7450 2400
 	1    0    0    -1  
 $EndComp
+$Comp
+L Device:R_Small R9
+U 1 1 6017B880
+P 1350 5750
+F 0 "R9" V 1400 5850 50  0000 C CNN
+F 1 "4.7k" V 1400 5600 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" H 1350 5750 50  0001 C CNN
+F 3 "~" H 1350 5750 50  0001 C CNN
+	1    1350 5750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:Jumper_NO_Small JP2
+U 1 1 6017DE7E
+P 1700 5950
+F 0 "JP2" H 1400 6050 50  0000 C CNN
+F 1 "Brown Fix" H 1700 6044 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 1700 5950 50  0001 C CNN
+F 3 "~" H 1700 5950 50  0001 C CNN
+	1    1700 5950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1050 4850 1050 5750
+Wire Wire Line
+	1050 5750 1250 5750
+Connection ~ 1050 4850
+Wire Wire Line
+	1450 5750 1950 5750
+Wire Wire Line
+	1800 5950 1950 5950
+Wire Wire Line
+	1950 5950 1950 5750
+Connection ~ 1950 5750
+Wire Wire Line
+	1950 5750 2400 5750
+$Comp
+L power:VCC #PWR?
+U 1 1 601AF6F5
+P 1350 5950
+F 0 "#PWR?" H 1350 5800 50  0001 C CNN
+F 1 "VCC" H 1365 6123 50  0000 C CNN
+F 2 "" H 1350 5950 50  0001 C CNN
+F 3 "" H 1350 5950 50  0001 C CNN
+	1    1350 5950
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1350 5950 1600 5950
 $EndSCHEMATC
