@@ -1,4 +1,4 @@
-# EGA2RGBC
+# EGA-2-RGBS
 
 Months ago I ran into [this](https://www.youtube.com/watch?v=vwKA1z8tg1g&t=527) video on YouTube that described how to implement an EGA/CGA to analog RGBS signal using just a ROM and a few passive components.
 Thinking it was a nice idea, I decided to implement my variant of it (including the tool that generates the values to program the EPROM), also including an optional buffer on the outputs of the ROM.
