@@ -7,6 +7,8 @@ Thinking it was a nice idea, I decided to implement my variant of it (including 
 
 **CAVEAT EMPTOR:** For now I tested this board only in DOS with a CGA card. Will update this note when I test EGA and colours.
 
+Note that this **will not convert EGA/CGA to VGA**, it will just make the signal analog and compatible with either a SCART input or a scaler like the GBS8200 (tested with [gbs-control](https://github.com/ramapcsx2/gbs-control) firmware).
+
 ## Jumpers
 
 - JP1: Bridge if you are using this with an EGA card, remove bridge for CGA
