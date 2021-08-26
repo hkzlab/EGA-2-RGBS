@@ -36,8 +36,9 @@ public class App {
     }
 
     private static void writeBinary(byte[] buf) throws IOException {
+        int count = 128; // Write the file 128 times, to build an image fit for a 27C010
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(outFile));
-        bos.write(buf);
+        while(count-- > 0) bos.write(buf);
         bos.flush();
         bos.close();        
     }
