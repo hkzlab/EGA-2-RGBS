@@ -13,9 +13,9 @@ obh = (bh);
 
 obl = (!mode&bl) | (mode&gli);
 
-ogh = (gh&!rh) | (bh&gh) | (gh&gli) | (!mode&gh);
+ogh = (gh&bfix) | (gh&!rh) | (bh&gh) | (gh&gli) | (!mode&gh);
 
-ogl = (mode&!bh&gh&rh) | (gli);
+ogl = (mode&!bh&gh&rh&!bfix) | (gli);
 
 orh = (rh);
 

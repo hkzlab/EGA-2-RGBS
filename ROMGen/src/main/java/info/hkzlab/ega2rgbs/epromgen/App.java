@@ -46,7 +46,7 @@ public class App {
     private static void writeTable(byte[] buf) throws IOException {
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(outFile));
         
-        bos.write(".i 9\n".getBytes());
+        bos.write(".i 10\n".getBytes());
         bos.write(".o 8\n".getBytes());
         bos.write(".ilb mode bh bl gh gli rh rl vs hs bfix\n".getBytes());
         bos.write(".ob obh obl ogh ogl orh orl ocs oncs\n".getBytes());
