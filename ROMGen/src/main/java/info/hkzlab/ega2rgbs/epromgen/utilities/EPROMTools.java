@@ -1,7 +1,7 @@
 package info.hkzlab.ega2rgbs.epromgen.utilities;
 
 public class EPROMTools {
-    private static final int TOT_COMBINATIONS = 512; // 2^9
+    private static final int TOT_COMBINATIONS = 1024; // 2^10
 
     private static final int IN_MASK_MODE = 0x0001;
     private static final int IN_MASK_BH = 0x0002;
@@ -12,6 +12,7 @@ public class EPROMTools {
     private static final int IN_MASK_RL = 0x0040;
     private static final int IN_MASK_VS = 0x0080;
     private static final int IN_MASK_HS = 0x0100;
+    private static final int IN_BRWNFIX = 0x0200;
 
     private static final int OUT_MASK_BH = 0x01;
     private static final int OUT_MASK_BL = 0x02;
@@ -36,14 +37,14 @@ public class EPROMTools {
         return i;
     }
 
-    static private boolean CGA_calcGH(boolean r, boolean g, boolean b, boolean i) {
+    static private boolean CGA_calcGH(boolean r, boolean g, boolean b, boolean i, boolean brwnFix) {
         boolean brown = CGA_calcBROWN(r, g, b, i);
-        return brown != g;
+        return brwnFix ? g: (brown != g);
     }
 
-    static private boolean CGA_calcGL(boolean r, boolean g, boolean b, boolean i) {
+    static private boolean CGA_calcGL(boolean r, boolean g, boolean b, boolean i, boolean brwnFix) {
         boolean brown = CGA_calcBROWN(r, g, b, i);
-        return brown || i;
+        return brwnFix ? i : (brown || i);
     }
 
     static private boolean CGA_calcRH(boolean r, boolean g, boolean b, boolean i) {
@@ -94,6 +95,7 @@ public class EPROMTools {
         boolean rl = (address & IN_MASK_RL) != 0;
         boolean vs = (address & IN_MASK_VS) != 0;
         boolean hs = (address & IN_MASK_HS) != 0;
+        boolean brwnFix = (address & IN_BRWNFIX) != 0;
 
         boolean out_bh, out_bl, out_gh, out_gl, out_rh, out_rl, out_cs;
 
@@ -101,10 +103,10 @@ public class EPROMTools {
 
         if(mode) { // CGA
             out_bh = CGA_calcBH(rh, gh, bh, gli);
-            out_gh = CGA_calcGH(rh, gh, bh, gli);
+            out_gh = CGA_calcGH(rh, gh, bh, gli, brwnFix);
             out_rh = CGA_calcRH(rh, gh, bh, gli);
             out_bl = CGA_calcBL(rh, gh, bh, gli);
-            out_gl = CGA_calcGL(rh, gh, bh, gli);
+            out_gl = CGA_calcGL(rh, gh, bh, gli, brwnFix);
             out_rl = CGA_calcRL(rh, gh, bh, gli);
         } else { // EGA
             out_bh = EGA_calcBH(rh, gh, bh, rl, gli, bl);
