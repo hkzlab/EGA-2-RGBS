@@ -47,14 +47,14 @@ public class App {
         
         bos.write(".i 9\n".getBytes());
         bos.write(".o 8\n".getBytes());
-        bos.write(".ilb mode bh bl gh gli rh rl vs hs\n".getBytes());
+        bos.write(".ilb mode bh bl gh gli rh rl vs hs bfix\n".getBytes());
         bos.write(".ob obh obl ogh ogl orh orl ocs oncs\n".getBytes());
         bos.write(".phase 11111111\n\n".getBytes());
        
         for(int idx = 0; idx < buf.length; idx++) {
             StringBuffer line = new StringBuffer();
 
-            for(int aidx = 0; aidx < 9; aidx++) {
+            for(int aidx = 0; aidx < 10; aidx++) {
                 line.append(((idx >> aidx) & 0x01) != 0 ? '1' : '0');
             }
 
