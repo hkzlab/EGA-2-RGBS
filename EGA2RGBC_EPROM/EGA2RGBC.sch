@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 1 1
 Title ""
 Date ""
-Rev "1.1"
+Rev "1.2"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -841,10 +841,10 @@ Connection ~ 1950 5750
 Wire Wire Line
 	1950 5750 2400 5750
 $Comp
-L power:VCC #PWR?
+L power:VCC #PWR0101
 U 1 1 601AF6F5
 P 1350 5950
-F 0 "#PWR?" H 1350 5800 50  0001 C CNN
+F 0 "#PWR0101" H 1350 5800 50  0001 C CNN
 F 1 "VCC" H 1365 6123 50  0000 C CNN
 F 2 "" H 1350 5950 50  0001 C CNN
 F 3 "" H 1350 5950 50  0001 C CNN
