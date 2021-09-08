@@ -29,6 +29,10 @@ public class EPROMTools {
         return r && g && !b && !i;
     }
 
+    static private boolean EGA_calcBROWN(boolean r, boolean g, boolean b, boolean rl, boolean gl, boolean bl) {
+        return r && g && !b && !rl && !bl && !gl;
+    }
+
     static private boolean CGA_calcBH(boolean r, boolean g, boolean b, boolean i) {
         return b;
     }
@@ -39,12 +43,12 @@ public class EPROMTools {
 
     static private boolean CGA_calcGH(boolean r, boolean g, boolean b, boolean i, boolean brwnFix) {
         boolean brown = CGA_calcBROWN(r, g, b, i);
-        return brwnFix ? g: (brown != g);
+        return brwnFix ? (brown != g) : g;
     }
 
     static private boolean CGA_calcGL(boolean r, boolean g, boolean b, boolean i, boolean brwnFix) {
         boolean brown = CGA_calcBROWN(r, g, b, i);
-        return brwnFix ? i : (brown || i);
+        return brwnFix ? (brown || i) : i;
     }
 
     static private boolean CGA_calcRH(boolean r, boolean g, boolean b, boolean i) {
@@ -63,12 +67,14 @@ public class EPROMTools {
         return bl;
     }
 
-    static private boolean EGA_calcGH(boolean r, boolean g, boolean b, boolean rl, boolean gl, boolean bl) {
-        return g;
+    static private boolean EGA_calcGH(boolean r, boolean g, boolean b, boolean rl, boolean gl, boolean bl, boolean brwnFix) {
+        boolean brown = EGA_calcBROWN(r, g, b, rl, gl, bl);
+        return brwnFix ? (brown != g) : g;
     }
 
-    static private boolean EGA_calcGL(boolean r, boolean g, boolean b, boolean rl, boolean gl, boolean bl) {
-        return gl;
+    static private boolean EGA_calcGL(boolean r, boolean g, boolean b, boolean rl, boolean gl, boolean bl, boolean brwnFix) {
+        boolean brown = EGA_calcBROWN(r, g, b, rl, gl, bl);
+        return brwnFix ? (brown || gl) : gl;
     }
 
     static private boolean EGA_calcRH(boolean r, boolean g, boolean b, boolean rl, boolean gl, boolean bl) {
@@ -110,10 +116,10 @@ public class EPROMTools {
             out_rl = CGA_calcRL(rh, gh, bh, gli);
         } else { // EGA
             out_bh = EGA_calcBH(rh, gh, bh, rl, gli, bl);
-            out_gh = EGA_calcGH(rh, gh, bh, rl, gli, bl);
+            out_gh = EGA_calcGH(rh, gh, bh, rl, gli, bl, /*brwnFix*/ false);
             out_rh = EGA_calcRH(rh, gh, bh, rl, gli, bl);
             out_bl = EGA_calcBL(rh, gh, bh, rl, gli, bl);
-            out_gl = EGA_calcGL(rh, gh, bh, rl, gli, bl);
+            out_gl = EGA_calcGL(rh, gh, bh, rl, gli, bl, /*brwnFix*/ false);
             out_rl = EGA_calcRL(rh, gh, bh, rl, gli, bl);
         }
 
