@@ -808,8 +808,8 @@ $Comp
 L Device:R_Small R9
 U 1 1 6017B880
 P 1350 5750
-F 0 "R9" V 1400 5850 50  0000 C CNN
-F 1 "4.7k" V 1400 5600 50  0000 C CNN
+F 0 "R9" V 1300 5950 50  0000 C CNN
+F 1 "4.7k" V 1300 5550 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" H 1350 5750 50  0001 C CNN
 F 3 "~" H 1350 5750 50  0001 C CNN
 	1    1350 5750
@@ -827,7 +827,7 @@ F 3 "~" H 1700 5950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1050 4850 1050 5750
+	1050 4850 1050 5650
 Wire Wire Line
 	1050 5750 1250 5750
 Connection ~ 1050 4850
@@ -919,4 +919,20 @@ Wire Wire Line
 Connection ~ 1850 3950
 Wire Wire Line
 	1850 3950 2050 3950
+$Comp
+L Device:R_Network08 RN1
+U 1 1 61395436
+P 1550 5250
+F 0 "RN1" V 1850 5500 50  0000 C CNN
+F 1 "10k" V 1750 5500 50  0000 C CNN
+F 2 "Resistor_THT:R_Array_SIP9" V 2025 5250 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/31509/csc.pdf" H 1550 5250 50  0001 C CNN
+	1    1550 5250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1350 5650 1050 5650
+Connection ~ 1050 5650
+Wire Wire Line
+	1050 5650 1050 5750
 $EndSCHEMATC
